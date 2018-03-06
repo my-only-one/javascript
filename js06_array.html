@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>js06_array</title>
+	<meta name="author" content="Administrator" />
+	<script type="text/javascript">
+		//js的array就是java中的list和stack的集合
+		var as = new Array();
+		as.push(11);
+		as.push(22);
+		alert(as);
+		
+		as = new Array(11,22,33,44,55,66,77,"111","222",23);
+		alert(as);
+		//一般使用以下方式定义数组
+		as = [11,12,1,2,3];
+		//转换为字符串通过---来完成连接
+		alert(as.join("---"));
+		//sort只会通过字符串来排序
+		alert(as.sort());
+		//颠倒顺序
+		alert(as.reverse());
+		
+		as = [1,2,3,4];
+		//表示在索引为2的前面删除0个元素，并且增加两个元素31和32-->1,2,31,32,3,4
+		//as.splice(2,0,31,32);
+		//表示在索引为2的前面删除2个元素，并且增加两个元素31和32-->1,2,31,32
+		as.splice(2,2,31,32);
+		alert(as);
+	</script>
+</head>
+<body>
+</body>
+</html>
+

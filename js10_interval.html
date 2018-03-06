@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>js01_hello</title>
+	<meta name="author" content="Administrator" />
+	<script type="text/javascript">
+	var timeId;
+	function cd() {
+		//在3秒之后会执行bigger这个函数,setTimeout的意思就是间隔一段时间来执行某个函数
+		//setInterval表示每隔一段时间就调用一次函数
+		timeId = setInterval("bigger()",500);
+		
+	}
+	
+	function sd(){
+		clearInterval(timeId);
+	}
+	
+	function bigger() {
+		//获取html中节点的id为txt的节点
+		var node = document.getElementById("txt");
+		var size = parseInt(node.style.fontSize);
+		if(size) {
+			size+=10;
+		} else {
+			size = "14";
+		}
+		node.style.fontSize = size+"px";
+	}
+	</script>
+</head>
+<body>
+	<div id="txt">开始</div>
+	<div onclick="cd()" style="cursor: pointer">点击开始操作</div>
+	<div onclick="sd()" style="cursor: pointer">停止操作</div>
+</body>
+</html>
+

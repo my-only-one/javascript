@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>js01_hello</title>
+	<meta name="author" content="Administrator" />
+	<script type="text/javascript">
+		function getPwd() {
+			//DOM中的第一个常用的方法是getElementById-->表示通过id来获取某个特定的标签，获取的是一个值
+			var pwd = document.getElementById("pwd");
+			// alert(pwd.value);
+			var pc = document.getElementById("showPwd");
+			pc.innerHTML = pwd.value;
+		}
+		
+		function getUsers() {
+			//根据标签的name属性来获取一组标签对象，这个方法一般都只用于表单的获取
+			var users = document.getElementsByName("users");
+			for(var i=0;i<users.length;i++) {
+				alert(users[i].value);
+			}
+		}
+		
+		function getInputs() {
+			//根据标签的名称获取一组元素，这个非常的有用，一般用于获取html的各种标签，以此完成各种操作
+			//一共能够获取页面的10个元素
+			var is = document.getElementsByTagName("input");
+			for(var i=0;i<is.length;i++) {
+				alert(is[i].value);
+			}
+		}
+	</script>
+</head>
+<body>
+	<input type="text" name="users" />
+	<input type="text" name="users" />
+	<input type="text" name="users" />
+	<input type="text" name="users" />
+	<input type="text" name="users" />
+	<input type="text" name="users" />
+	<br/>
+	<input type="password" id="pwd" />
+	<br/>
+	<input type="button" value="获取users" onclick="getUsers()"/>
+	<input type="button" value="获取PWD" onclick="getPwd()"/>
+	<input type="button" value="获取Input" onclick="getInputs()"/>
+	<br/>
+	<div id="showPwd">
+		<h1>dddd</h1>
+	</div>
+</body>
+</html>
+

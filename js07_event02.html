@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>js01_hello</title>
+	<meta name="author" content="Administrator" />
+	<script type="text/javascript">
+	var big = true;
+	function bigger(obj) {
+		var cs = parseInt(obj.style.fontSize);
+		if(cs) {
+			if(cs>=30) {
+				big = false;
+				obj.innerHTML = "点击变小";
+			}
+			if(cs<=12) {
+				big = true;
+				obj.innerHTML = "点击变大";
+			}
+			if(big) {
+				cs+=2;
+			} else {
+				cs-=2;
+			}
+			obj.style.fontSize = cs+"px";
+		} else {
+			obj.style.fontSize = "14px";
+		}
+	}
+	</script>
+</head>
+<body>
+	<div onclick="bigger(this)" style="cursor: pointer">点击变大</div>
+</body>
+</html>
+

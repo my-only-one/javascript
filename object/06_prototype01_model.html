@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>06_prototype01_model</title>
+	<meta name="author" content="Administrator" />
+	<script type="text/javascript">
+	/**
+	 * 原型是js中非常特殊一个对象，当一个函数创建之后，会随之就产生一个原型对象
+	 * 当通过这个函数的构造函数创建了一个具体的对象之后，在这个具体的对象中
+	 * 就会有一个属性指向原型
+	 */
+	//第一种状态
+	function Person(){
+		
+	}
+	//第二种状态
+	Person.prototype.name = "Leon";
+	Person.prototype.age = 23;
+	Person.prototype.say = function() {
+		alert(this.name+","+this.age);
+	}
+	//第三中状态，创建了一个对象之后会有一个_prop_的属性指向原型
+	//在使用时如果在对象内部没有找到属性会去原型中找，_prop_属性是隐藏的
+	var p1 = new Person();
+	//p1.say();
+	//以下方法可以检测出p1是否有_prop_指向Person的原型
+	//alert(Person.prototype.isPrototypeOf(p1));
+	
+	//第四种状态
+	var p2 = new Person();
+	//是在自己的空间中定义了一个属性，不会替换原型中的属性
+	p2.name = "Ada";
+	//p2.say();
+	//p1.say();
+	
+	// //检测某个对象是否是某个函数的原型
+	// alert(Person.prototype.isPrototypeOf(p2));
+	
+	// //检测某个对象的constructor
+	// alert(p1.constructor==Person);
+	
+	// //检测某个属性是否是自己的属性
+	// alert(p1.hasOwnProperty("name"));//false，p1自己的空间中没有值
+	// alert(p2.hasOwnProperty("name"));//true,p2在自己的空间中设置了name属性
+	
+	//delete p2.name;
+	//p2.say();
+	//alert(p2.hasOwnProperty("name"));//由于已经删除了，所以是false
+	
+	//检测某个对象在原型或者自己中是否包含有某个属性，通过in检测
+	//alert("name" in p1);//true
+	//alert("name" in p2);//true
+	//alert("address" in p1);//在原型和自己的空间中都没有，false
+	
+	alert(hasPrototypeProperty(p1,"name"));//true
+	alert(hasPrototypeProperty(p2,"name"));//false
+	/**
+	 * 可以通过如下方法检测某个属性是否在原型中存在
+	 */
+	function hasPrototypeProperty(obj,prop) {
+		return ((!obj.hasOwnProperty(prop))&&(prop in obj))
+	}
+	</script>
+</head>
+<body>
+</body>
+</html>
+

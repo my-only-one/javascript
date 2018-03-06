@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>09_prototype03</title>
+	<meta name="author" content="Administrator" />
+	<script type="text/javascript">
+	/**
+	 * 以下等于为String扩展了一个trim的方法来去除空格
+	 */
+	String.prototype.trim = function() {
+		//js的正则表达式和java很类似，区别就是js是使用//
+		return this.replace(/(^\s+)|(\s+$)/g,"");
+	}
+	var str = "   aaaa   ";
+	alert("|"+str.trim()+"|");
+	</script>
+</head>
+<body>
+</body>
+</html>
+

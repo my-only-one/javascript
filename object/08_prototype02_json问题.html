@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>08_prototype02_json问题</title>
+	<meta name="author" content="Administrator" />
+	<script type="text/javascript">
+	/**
+	 * 原型是js中非常特殊一个对象，当一个函数创建之后，会随之就产生一个原型对象
+	 * 当通过这个函数的构造函数创建了一个具体的对象之后，在这个具体的对象中
+	 * 就会有一个属性指向原型
+	 */
+	//第一种状态
+	function Person(){
+		
+	}
+	
+	var p1 = new Person();
+	Person.prototype.sayHi = function() {
+		alert(this.name+":hi");
+	}
+	
+	/**
+	 *如果把重写放置在new Person之后，注意内存模型,原型重写的问题.jpg
+	 */
+	Person.prototype = {
+		constructor:Person,//手动指定constructor
+		name:"Leon",
+		age:23,
+		say:function() {
+			alert(this.name+","+this.age);
+		}
+	}
+	p1.sayHi();//不会报错，但是没有this.name
+	
+	var p2 = new Person();
+	//p2.sayHi();//此时p2没有sayHi,所以就会报错
+	p2.say();
+	p1.say();
+	</script>
+</head>
+<body>
+</body>
+</html>
+

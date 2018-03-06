@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>js01_hello</title>
+	<meta name="author" content="Administrator" />
+	<script type="text/javascript">
+	
+	function clickD(obj) {
+		alert(obj.innerHTML);
+	}
+	function mouseD(obj) {
+		//设置这个对象的颜色，在js中设置文本的样式均通过xx.style.样式名称
+		obj.style.color = "#f00";
+		//当使用代码来设置样式的时候，如果在css中通过-表示的，都是有驼峰标识，font-size-->fontSize
+		obj.style.fontSize = "18px";
+	}
+	function outD(obj) {
+		obj.style.color = "#000";
+		obj.style.fontSize = "16px";
+	}
+	</script>
+</head>
+<body>
+	<div onclick="clickD(this)" style="cursor: pointer">点击了试一下</div>
+	<div onmouseover="mouseD(this)" onmouseout="outD(this)">鼠标移动上来试试</div>
+</body>
+</html>
+

@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>js01_hello</title>
+	<meta name="author" content="Administrator" />
+	<script type="text/javascript">
+	function cd() {
+		//在3秒之后会执行bigger这个函数,setTimeout的意思就是间隔一段时间来执行某个函数
+		//setTimeout仅仅只会执行一次，如果希望重复执行，需要使用setInterval
+		setTimeout("bigger()",3000);
+		
+	}
+	
+	function bigger() {
+		//获取html中节点的id为txt的节点
+		var node = document.getElementById("txt");
+		node.style.fontSize = "200px";
+	}
+	</script>
+</head>
+<body>
+	<div id="txt" style="cursor: pointer">开始</div>
+	<div onclick="cd()">点击开始操作</div>
+</body>
+</html>
+

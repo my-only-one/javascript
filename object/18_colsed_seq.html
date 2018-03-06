@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>18_colsed_seq.html</title>
+	<meta name="author" content="Administrator" />
+	<script type="text/javascript">
+	fn1();
+	//不会报错,对于通过function fn()这种写法来定义的函数，永远都会被最先初始化
+	function fn1() {
+		alert("fn1");
+	}
+	
+	fn2();
+	//使用如下方式定义函数，不会被先执行，如果在之前调用该函数就会报错
+	/**
+	 * 以下函数的定义方式是现在内存中创建了一块区域，之后通过一个fn2的变量
+	 * 指向这块区域，这块区域的函数开始是没有名称的 ，这种函数就叫做匿名函数
+	 */
+	var fn2 = function() {
+		alert("fn2");
+	}	
+	</script>
+</head>
+<body>
+</body>
+</html>
+

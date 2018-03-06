@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>27_colsed_private.html</title>
+	<meta name="author" content="Administrator" />
+	<script type="text/javascript">
+	function Person(name) {
+		/**
+		 * 此时就没有办法直接访问name这个属性，因为没有this.name
+		 * 要访问name只能通过this.getName,this.setName
+		 * 但是使用这种方式创建私有变量带来的问题是，每个对象都存储大量的函数
+		 * 解决的办法是通过静态私有变量来解决
+		 */
+		this.setName = function(value) {
+			name = value;
+		}
+		this.getName = function() {
+			return name;
+		}
+	}
+	
+	var p = new Person("aa");
+	alert(p.getName());
+	p.setName("bb");
+	alert(p.getName());
+	</script>
+</head>
+<body>
+</body>
+</html>
+

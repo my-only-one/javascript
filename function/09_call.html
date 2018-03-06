@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>09_call.html</title>
+	<meta name="author" content="Administrator" />
+
+</head>
+<body>
+	<script type="text/javascript">
+	/**
+	 * 当需要创建一个类的时候，设置类的属性和方法需要通过this关键字来引用
+	 * 但是特别注意:this关键字在调用时会根据不同的调用对象变得不同
+	 */
+
+	var color = "red";
+	function showColor() {
+		alert(this.color);
+	}
+	/**
+	 * 创建了一个类，有一个color的属性和一个show的方法
+	 */
+	function Circle(color) {
+		this.color = color;
+	}
+
+	var c = new Circle("yellow");
+
+	showColor.call(this);//使用上下文来调用showColor,结果是red
+	showColor.call(c);//上下文对象是c,结果就是yellow
+	/**
+	 * 通过以上发现，使用call和apply之后，对象中可以不需要定义方法了
+	 * 这就是call和apply的一种运用
+	 */
+	</script>
+</body>
+</html>
+

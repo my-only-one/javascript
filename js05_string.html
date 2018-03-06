@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>js05_string</title>
+	<meta name="author" content="Administrator" />
+	<script type="text/javascript">
+		var str1 = new String("abc");
+		var str2 = "abc";
+		alert(str1==str2);
+		var s = str2.concat("hello","world");
+		alert(s);
+		//包含start不包含end
+		s = s.slice(2,4);
+		alert(s);
+		var str = "hello world";
+		//从2开始到5结束
+		alert(str.substring(2,5));
+		//从2开始取5个字符
+		alert(str.substr(2,5));
+		
+		str = "abc.txt";
+		alert(str.substr(str.lastIndexOf(".")+1));
+	</script>
+</head>
+<body>
+</body>
+</html>
+

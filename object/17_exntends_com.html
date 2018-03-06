@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>17_exntends_com.html</title>
+	<meta name="author" content="Administrator" />
+	<script type="text/javascript">
+	/**
+	 * 组合的实现方式是属性通过伪造的方式实现，方法通过原型链的方式实现
+	 * 注意内存模型
+	 */
+	function Parent(name) {
+		this.color = ["red","blue"];
+		this.name = name;
+	}
+	Parent.prototype.ps = function() {
+		alert(this.name+"["+this.color+"]");
+	}
+	
+	function Child(name,age) {
+		//已经完成了伪造
+		Parent.call(this,name);
+		this.age = age;
+	}
+	Child.prototype = new Parent();
+	Child.prototype.say = function() {
+		alert(this.name+","+this.age+"["+this.color+"]");
+	}
+	
+	
+	var c1 = new Child("Leon",22);
+	c1.color.push("green");
+	c1.say();
+	c1.ps();
+	var c2 = new Child("Ada",23);
+	c2.say();
+	c2.ps();
+	</script>
+</head>
+<body>
+</body>
+</html>
+

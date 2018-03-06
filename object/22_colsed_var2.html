@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>22_colsed_var2.html</title>
+	<meta name="author" content="Administrator" />
+	<script type="text/javascript">
+	function fn1() {
+		//创建了一个数组
+		var fns = new Array();
+		//i这个变量是保存在fn1这个作用域中的
+		for(var i=0;i<10;i++) {
+			//num这个变量是保存在fns这个tf这个作用域，每一个闭包的num都是不一样
+			//所以此时所消耗的内存特别的大
+			var tf = function(num) {
+				fns[num] = function() {
+					return num;
+				}
+			}
+			tf(i);
+		}
+		return fns;
+	}
+	
+	var fs = fn1();
+	for(var i=0;i<fs.length;i++) {
+		//每一个fs都是在不同作用域链中，num也是保存在不同的作用域中，所以输出0-9
+		document.write(fs[i]()+"<br/>");
+	}
+	</script>
+</head>
+<body>
+</body>
+</html>
+

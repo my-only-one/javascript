@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>js01_hello</title>
+	<meta name="author" content="Administrator" />
+	<script type="text/javascript">
+	</script>
+</head>
+<body>
+	<ul>
+		<li>aaaaaaaaaaaaaa</li>
+		<li>bbbbbbbbbbbbbb</li>
+		<li>cccccccccccccc</li>
+		<li>dddddddddddddd</li>
+		<li>eeeeeeeeeeeeee</li>
+	</ul>
+	<input type="button" value="点击一下" id="btn"/>
+	<script type="text/javascript">
+		var btn = document.getElementById("btn");
+		//可以通过如下方式来绑定事件，这样绑定事件，就可以完成事件和html的解耦合操作
+		//在开发中通常都是使用这种方式来绑定事件
+		//这个事件的处理函数中默认有一个event的参数，用来获取相应的事件信息
+		btn.onclick = function(event) {
+			//特别注意：对于IE而言，不会自动传递event这个参数进去，IE需要通过window.event来获取事件
+			//但是FF却不支持window.event，所以通常使用如下方式解决
+			event = event||window.event;
+			alert(event.type);
+			//this就表示这个按钮对象
+			alert(this.value);
+		}
+	</script>
+</body>
+</html>
+

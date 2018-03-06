@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>js01_hello</title>
+	<meta name="author" content="Administrator" />
+
+</head>
+<body>
+	<script type="text/javascript">
+	function sum(num1,num2) {
+		return num1+num2;
+	}
+
+	function callSum1(num1,num2) {
+		//使用sum这个函数来完成一次调用，调用的参数就是callSum1这个函数的参数
+		//apply的第二个参数表示一组参数数组
+		return sum.apply(this,arguments);
+	}
+
+	function callSum2(num1,num2) {
+		//关键就是第二个参数是数组
+		return sum.apply(this,[num1,num2]);
+	}
+	alert(callSum1(12,22));
+	alert(callSum2(22,32));
+
+	function callSum3(num1,num2) {
+		//call是通过参数列表来完成传递，其他和apply没有任何区别
+		return sum.call(this,num1,num2);
+	}
+	alert(callSum3(22,33));
+	</script>
+</body>
+</html>
+

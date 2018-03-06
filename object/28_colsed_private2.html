@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>28_colsed_private2.html</title>
+	<meta name="author" content="Administrator" />
+	<script type="text/javascript">
+	var Person;
+	(function(){
+		//name正在函数结束之后就消失，在外面是无法引用的
+		var name = "";
+		Person = function(value){
+			name = value;
+		}
+		Person.prototype.setName = function(value) {
+			name = value;
+		}
+		Person.prototype.getName = function() {
+			return name;
+		}
+	})();
+	
+	var p1 = new Person("aa");
+	alert(p1.getName());
+	p1.setName("bb");
+	alert(p1.getName());
+	</script>
+</head>
+<body>
+</body>
+</html>
+

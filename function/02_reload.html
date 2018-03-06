@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>02_reload.html</title>
+	<meta name="author" content="Administrator" />
+	<script type="text/javascript">
+	// function sum(num1,num2) {
+		// return num1+num2;
+	// }
+	var sum = function(num1,num2) {
+		return num1+num2;
+	}
+	
+	// function sum(num1) {
+		// return num1+100;
+	// }
+	/**
+	 * 此时sum所指向的空间已经从有两个参数的函数变化到只有num1的函数中
+	 * 在调用的时候就只会调用只有num1的函数
+	 * 特别指出：函数的参数和调用没有关系，如果函数只有一个参数，但是却传入
+	 * 了两个参数，仅仅只会匹配一个
+	 * 所以在js中函数不存在重载
+	 */
+	var sum = function(num1) {
+		return num1+100;
+	}
+	
+	//函数有如下一种定义方式
+	/**
+	 * 如下定义方式等于定义了一个
+	 * function fn(num1,num2){
+	 * 	  alert(num1+num2);
+	 * }
+	 * 所以通过以下的例子，充分的说明函数就是一个对象
+	 */
+	var fn = new Function("num1","num2","alert('fun:'+(num1+num2))");
+	fn(12,22);
+	alert(sum(19));
+	
+	alert(sum(19,20));
+	</script>
+</head>
+<body>
+</body>
+</html>
+

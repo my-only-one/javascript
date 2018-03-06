@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>js01_hello</title>
+	<meta name="author" content="Administrator" />
+	<script type="text/javascript">
+	//当窗口加载完毕之后才执行init方法，这样可以省略body中的onload
+	//所以如果希望使用如下的事件定义方式，需要先完成html信息的加载
+	window.onload = init;
+	/**
+	 * 此时init方法是在body的onload之后执行，就等于在所有的页面标签加载完毕之后才执行init,此时节点就存在了
+	 */
+	function init() {
+		alert("abc");
+		var btn = document.getElementById("btn");
+		/**
+		 * 如下绑定方式带来最大的一个问题是如果将该段代码放到head中定义，在执行到绑定事件的时候并没有把html的标签
+		 * 渲染出来，所以通过DOM得到的节点都是null的，就报错了，解决这个问题的方法是在页面加载完成之后才调用以下这段代码
+		 * 可以在body中的通过onload事件来处理
+		 */
+		btn.onclick = function(event) {
+			//特别注意：对于IE而言，不会自动传递event这个参数进去，IE需要通过window.event来获取事件
+			//但是FF却不支持window.event，所以通常使用如下方式解决
+			event = event||window.event;
+			alert(event.type);
+			//this就表示这个按钮对象
+			alert(this.value);
+		}
+	}
+	</script>
+</head>
+<body>
+	<ul>
+		<li>aaaaaaaaaaaaaa</li>
+		<li>bbbbbbbbbbbbbb</li>
+		<li>cccccccccccccc</li>
+		<li>dddddddddddddd</li>
+		<li>eeeeeeeeeeeeee</li>
+	</ul>
+	<input type="button" value="点击一下" id="btn"/>
+</body>
+</html>
+

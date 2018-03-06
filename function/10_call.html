@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>10_call.html</title>
+    <meta name="author" content="Administrator" />
+
+    <style>
+        body {
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <script type="text/javascript">
+    /**
+     * [Parent description]
+     * @param {[type]} name  [description]
+     * @param {[type]} money [description]
+     */
+    function Parent(name, money) {
+        this.name = name;
+        this.money = money;
+        this.getMoney = function() {
+            console.log(this.name + ":" + this.money);
+        }
+    }
+
+    function Child(name, money) {
+        console.log(arguments);
+        Parent.call(this, name, money);
+    }
+
+    function Song(name, money) {
+        Parent.apply(this, [name, money]);
+    }
+    var child = new Child("zhangsan", 800);
+    var song = new Song("lisi", 1800);
+    child.getMoney();
+    song.getMoney();
+    /**
+     * [add description]
+     */
+    function add() {
+        var sum = 0;
+        for (var i = 0; i < arguments.length; i++) {
+            sum += arguments[i];
+        }
+        return sum;
+    }
+    console.log(add(1, 2, 3, 4));
+    /**
+     * [sum description]
+     * @return {[type]} [description]
+     */
+    function sum() {
+        return [1, 2, 3, 4].reduce(function(k1, k2) {
+            return k1 + k2;
+        });
+    }
+    console.log(sum());
+    /**
+     * [sum2 description]
+     * @return {[type]} [description]
+     */
+    function sum2() {
+        return [1, 2, 3, 4, 6].reduce((k1, k2) => k1 + k2);
+    }
+    console.log(sum2());
+
+    function sum3() {
+        return Array.prototype.reduce.call(arguments, function(n1,n2) {
+            return n1 + n2;
+        });
+    }
+    console.log(sum3(1,2,3,4,5));
+
+
+    function cont(){
+    	var len = arguments.length;
+    	switch(len){
+    		case 1:
+    			return arguments[0];
+    			break;
+    		case 2:
+    			return arguments[0] + arguments[1];
+    			break;
+    	}
+
+    }
+    alert(cont(3,4))
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>25_colsed_blockScope.html</title>
+	<meta name="author" content="Administrator" />
+	<script type="text/javascript">
+	for(var i=0;i<10;i++) {
+		
+	}
+	//在js中没有块作用域，不管是使用循环还是判断之后，这个变量会一直存在
+	/*
+	 * 所以当在全局使用某个变量进行循环或者判断之后，这个变量可能会影响
+	 * 到函数中的变量，所以在特殊情况不要使用全局变量，而且使用全局变量
+	 * 在作用域链的最上层，访问是最慢的
+	 */
+	var i;//此时会认为是无效语句，除非使用var i = 0;
+	alert(i);
+	</script>
+</head>
+<body>
+</body>
+</html>
+

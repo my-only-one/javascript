@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>js03_obj</title>
+	<meta name="author" content="Administrator" />
+	<script type="text/javascript">
+	// var x = function() {
+		// alert("x");
+	// }
+	// //此时x就是一个function函数
+	// x();
+	// function fn() {
+		// alert("fn");
+		// //对于函数而言，直接写return就等于有返回值
+		// return "100";
+	// }
+	// //此时是将y这个变量指向函数fn,可以通过y()来调用函数
+	// var y = fn;
+	// fn();
+	// //可以调用
+	// y();
+	// //将函数fn所执行的返回值传给z变量，所以z为100
+	// var z = fn();
+	// alert(z);
+	// alert(y);
+	
+	
+	//可以使用function来模拟java的类
+	function Person(name,age) {
+		//定义了一个Person的属性为name
+		this.name = name;
+		//定义了Person的属性为age
+		this.age = age;
+		this.address = "云南昭通";
+		//如果没有用this声明，这个变量就仅仅只是一个局部变量，不是类的属性
+		var x = 10;
+		//创建了一个行为
+		this.say = function() {
+			alert(this.name+","+this.age);
+		}
+	}
+	//创建了一个对象p1是Person的对象
+	var p1 = new Person("张三",12);
+	alert(p1.name+","+p1.address+","+p1.x);
+	p1.say();
+	
+	var p2 = new Person("德华",22);
+	p2.address = "香港";
+	//可以通过对象["属性字符串"]完成对属性的调用
+	alert(p2["name"]+","+p2["address"]);
+	
+	alert(typeof p1);
+	alert(p1 instanceof Person);
+	//在js中对于对象而言，可以通过for in来变量对象的属性
+	for(var a in p1) {
+		//可以获取对象中的所有显示声明的属性
+		alert(a+":"+p1[a]);
+	}
+	</script>
+</head>
+<body>
+<input type="button" value="运行fn1" onclick="fn1()"/>
+<input type="button" value="运行fn2" onclick="fn2()"/>
+<input type="button" value="运行fn3" onclick="fn3()"/>
+</body>
+</html>
+

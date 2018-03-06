@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>10_prototype&con</title>
+	<meta name="author" content="Administrator" />
+	<script type="text/javascript">
+/**
+ * 为了解决原型所带来的问题，此处需要通过组合构造函数和原型来实现对象的创建
+ * 将属性在构造函数中定义，将方法在原型中定义
+ * 这种有效集合了两者的优点，是目前最为常用的一种方式
+ */
+	function Person(name,age,friends){
+		//属性在构造函数中定义
+		this.name = name;
+		this.age = age;
+		this.friends = friends;
+	}
+	Person.prototype = {
+		constructor:Person,
+		//方法在原型中定义
+		say:function() {
+			console.log(this.name+"["+this.friends+"]");
+		}
+	}
+	//此时所以的属性都是保存在自己的空间中的
+	var p1 = new Person("Leon",23,["Ada","Chris"]);
+	p1.name = "John";
+	p1.friends.push("Mike");//为p1增加了一个朋友
+	p1.say();
+	var p2 = new Person("Ada",33,["Leon"]);
+	//此时原型中就多了一个Mike,这就是原型所带来的第二个问题
+	p2.say();//Ada[Leon]
+	</script>
+</head>
+<body>
+</body>
+</html>
+

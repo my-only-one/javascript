@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>24_colsed_this2.html</title>
+	<meta name="author" content="Administrator" />
+	<script type="text/javascript">
+	var name = "window";
+	var person = {
+		name:"zhangsan",
+		age:23,
+		say:function() {
+			//that就指向person
+			var that = this;
+			return function() {
+				return that.name;
+			}
+		}
+	}
+	/*
+	 * 此时that是指向person的，所以调用that.name就是person中name
+	 * 
+	 */
+	alert(person.say()());
+	</script>
+</head>
+<body>
+</body>
+</html>
+

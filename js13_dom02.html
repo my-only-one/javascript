@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>js01_hello</title>
+	<meta name="author" content="Administrator" />
+	<script type="text/javascript">
+	function getAllH1() {
+		var ah = document.getElementsByTagName("h1");
+		for(var i=0;i<ah.length;i++) {
+			// //获取节点中的文本内容
+			// alert(ah[i].innerHTML);
+			// //获取节点的名称
+			// alert(ah[i].nodeName);
+			// //获取节点的类型
+			// alert(ah[i].nodeType);
+			// //获取节点中的值:节点中的值只是在针对文本节点时有用
+			// alert(ah[i].nodeValue);
+			// //获取某个节点的文本节点
+			// alert(ah[i].firstChild.nodeType);
+			//获取某个文本节点的值，对于IE和firefox而言文本的空格不一致，对于IE而言，仅仅只会把换行加入空白，但是FF而言就是全部空格
+			//所以在获取文本节点值的时候，需要把空格去除
+			alert("|"+ah[i].firstChild.nodeValue+"|");
+		}
+	}
+	
+	function getConH2() {
+		var con = document.getElementById("content");
+		var h2 = con.getElementsByTagName("h2");
+		//得到的h2元素是一个数组
+		alert(h2[0].innerHTML);
+		//通过h2这个节点来找到h3中span的值
+		//1、找到父节点
+		var pn = h2[0].parentNode;
+		//2、通过父节点找到名称为h3的节点
+		var h3 = pn.getElementsByTagName("h3")[0];
+		//3、通过h3找到span
+		var s = h3.getElementsByTagName("span")[0];
+		alert(s.innerHTML);
+	}
+	</script>
+</head>
+<body>
+	<div id="content">
+		<h1>
+			aaaaa1
+			<span>aaaaassss</span>
+		</h1>
+		
+		<h2>
+			bbbbbbbbb1
+			<span>bbbbbssss</span>
+		</h2>
+		
+		<h3>
+			cccccccc1
+			<span>ccccccssss</span>
+		</h3>
+	</div>
+	<h1>
+		hhhhhhhaaaaa1
+		<span>hhhhhhhhhhhaaaaassss</span>
+	</h1>
+	
+	<h2>
+		hhhhhhhhhhbbbbbbbbb1
+		<span>hhhhhhbbbbbssss</span>
+	</h2>
+	
+	<h3>
+		hhhhhhhhhhhcccccccc1
+		<span>hhhhhhhhhhhhhccccccssss</span>
+	</h3>
+	
+	<input type="button" value="获取所有的h1" onclick="getAllH1()" />
+	<input type="button" value="获取content的h2" onclick="getConH2()" />
+</body>
+</html>
+

@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>js01_hello</title>
+	<meta name="author" content="Administrator" />
+	<script type="text/javascript">
+		//对于js而言，是没有数据类型的，全部都是通过var来完成变量的创建
+		/*var a = 19;
+		alert(a);
+		a = "hello";
+		alert(a);
+		*/
+		
+		//变量的作用域
+		function fn1() {
+			var c = 10;
+			alert(c);
+		}
+		
+		function fn2() {
+			//当在函数内部没有使用var来声明变量的时候，这个变量就会作为全局变量声明
+			//b = 10;
+			//所以一定注意，在函数中定义变量一定要使用var
+			var b = 10;
+			alert(b);
+			// alert(c);
+		}
+		
+		function fn3() {
+			alert(b);
+		}
+		
+		//变量的类型,常用的类型有:Number,String,Array,Date
+		var a = 10.6;
+		// alert(typeof a);
+		a = "11";
+		//java进行强制类型转换是(Number)a,而js是通过Number(a)
+		// alert(Number(a)+1);
+		//如果强制转换一个非数字的值为Number会得到一个NaN的值
+		var b = "abc";
+		//alert(Number(b));
+		b = "12px";
+		//使用parseInt可以将字符串开头的几个数字转换为int，但是如果开头不是数字，那就得到NaN
+		//alert(parseInt(b));
+		var as = ["a","b",1,2,3];
+		//对于数组等对象而言，显示的结果就是object不会显示Array
+		//alert(typeof as);
+		//判断as是否是Array的实例，如果是返回true
+		//alert(as instanceof Array);
+		
+		//布尔类型:true和false,在js中，非0就是true，特别注意:NaN是false
+		//当一个变量没有定义值的时候，是undefined类型，undefined类型是false
+		//特别注意：在js中除了NaN,undefined,0这三个数是false外其余皆是true
+		var size;		
+		// alert(!!size);
+		
+		for(var i=0;i<as.length;i++) {
+			alert(as[i]);
+		}
+	</script>
+</head>
+<body>
+<input type="button" value="运行fn1" onclick="fn1()"/>
+<input type="button" value="运行fn2" onclick="fn2()"/>
+<input type="button" value="运行fn3" onclick="fn3()"/>
+</body>
+</html>
+

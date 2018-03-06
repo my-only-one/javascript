@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>js01_hello</title>
+	<meta name="author" content="Administrator" />
+	<script type="text/javascript">
+	/**
+	 * 由于函数是对象，所以可以直接把函数通过参数传递进来
+	 */
+	function callFun(fun,arg) {
+		//第一个参数就是函数对象
+		return fun(arg);
+	}
+	
+	function sum(num) {
+		return num+100;
+	}
+	
+	function say(str) {
+		alert("hello "+str);
+	}
+	//var say = xxx
+	//调用了say函数
+	callFun(say,"Leon");
+	//调用了sum函数
+	alert(callFun(sum,20));
+	
+	function fn1(arg) {
+		/**
+		 * 此时返回的是一个函数对象
+		 */
+		var rel = function(num) {
+			return arg+num;
+		}
+		return rel;
+	}
+	//此时f是一个函数对象，可以完成调用
+	var f = fn1(20);
+	alert(f(20));
+	alert(f(11));
+	</script>
+</head>
+<body>
+</body>
+</html>
+

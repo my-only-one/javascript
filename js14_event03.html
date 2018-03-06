@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>js01_hello</title>
+	<meta name="author" content="Administrator" />
+	<script type="text/javascript">
+	//当窗口加载完毕之后才执行init方法，这样可以省略body中的onload
+	//所以如果希望使用如下的事件定义方式，需要先完成html信息的加载
+	window.onload = init;
+	/**
+	 * 此时init方法是在body的onload之后执行，就等于在所有的页面标签加载完毕之后才执行init,此时节点就存在了
+	 */
+	function init() {
+		//1、找到所有的li
+		var lis = document.getElementsByTagName("li");
+		//2、为所有的li绑定事件
+		for(var i=0;i<lis.length;i++) {
+			lis[i].onmouseover = changeColor;
+			lis[i].onmouseout = reColor;
+		}
+	}
+	
+	function changeColor() {
+		this.style.color = "#f00";
+	}
+	function reColor() {
+		this.style.color = "#000";
+	}
+	</script>
+</head>
+<body>
+	<ul>
+		<li>aaaaaaaaaaaaaa</li>
+		<li>bbbbbbbbbbbbbb</li>
+		<li>cccccccccccccc</li>
+		<li>dddddddddddddd</li>
+		<li>eeeeeeeeeeeeee</li>
+	</ul>
+	<input type="button" value="点击一下" id="btn"/>
+</body>
+</html>
+

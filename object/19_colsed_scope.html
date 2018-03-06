@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>19_colsed_scope.html</title>
+	<meta name="author" content="Administrator" />
+	<script type="text/javascript">
+	/**
+	 * 在js中当进行函数的调用，会为每一个函数增加一个属性SCOPE，通过这个属性来指向一块内存
+	 * 这块内存中包含有所有的上下文使用的变量，当在某个函数中调用了新函数之后，新函数依然
+	 * 会有一个作用域来执行原有的函数的SCOPE和自己新增加的SCOPE，这样就形成一个链式结构
+	 * 这就是js中的作用域链
+	 */
+	var color = "red";
+	
+	var showColor = function() {
+		alert(this.color);
+	}
+	
+	function changeColor() {
+		var anotherColor = "blue";
+		function swapColor() {
+			var tempColor = anotherColor;
+			anotherColor = color;
+			color = tempColor;
+		}
+		swapColor();
+	}
+	
+	changeColor();
+	
+	showColor();
+	</script>
+</head>
+<body>
+</body>
+</html>
+

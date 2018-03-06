@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>js01_hello</title>
+	<meta name="author" content="Administrator" />
+	<script type="text/javascript">
+	/**
+	 * 以下演示了通过原型的创建方式，使用基于原型的创建可以将属性和方法
+	 * 设置为Person专有的，不能再通过window来调用
+	 */
+	function Person(){
+
+	}
+	Person.prototype.name = "Leon";
+	Person.prototype.age = 23;
+	Person.prototype.say = function() {
+		console.log(this.name+","+this.age);
+	}
+	var p1 = new Person();
+	p1.say();
+	//通过window没有办法调用say方法，如此就完成了封装
+	// say();
+	</script>
+</head>
+<body>
+</body>
+</html>
+
